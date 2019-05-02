@@ -1,0 +1,24 @@
+<section *ngIf="superHero">
+  <div class="row">
+    <div class="col-md-3">
+      <img height="100%" width="100%" [src]="superHero?.thumbnail.path + '.' + superHero?.thumbnail.extension" />
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{ superHero?.name }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>{{ superHero?.description }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-primary">Detalhes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

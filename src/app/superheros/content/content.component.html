@@ -1,2 +1,11 @@
 <label for="typeahead-focus">Search for a Super-Hero:</label>
-<input id="typeahead-focus" type="text" class="form-control" [ngbTypeahead]="search" [resultFormatter]="format" />
+<input
+  id="typeahead-focus"
+  type="text"
+  class="form-control"
+  [ngbTypeahead]="search"
+  [resultFormatter]="format"
+  [inputFormatter]="inputFormatter"
+  (selectItem)="onSelectedCharacter($event)"
+/>
+<app-card [superHero]="selectedSuperHero"></app-card>

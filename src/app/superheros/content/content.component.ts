@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/core/marvel/marvel.service';
-import { of, Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, tap, switchMap } from 'rxjs/operators';
-import { stringify } from '@angular/core/src/render3/util';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Character } from 'src/app/core/marvel/marvel.model';
 
 @Component({
@@ -12,25 +11,29 @@ import { Character } from 'src/app/core/marvel/marvel.model';
 })
 export class ContentComponent implements OnInit {
   public superHeros: any;
+  public selectedSuperHero: Character;
 
   constructor(private marvelService: MarvelService) {}
 
-  ngOnInit() {
-    this.marvelService.getCharacters('Spider').subscribe(results => {
-      this.superHeros = results;
-      console.log(results);
-    });
-  }
+  ngOnInit() {}
 
-  search = (text$: Observable<string>) =>
-    text$.pipe(
+  search = (text: Observable<string>) =>
+    text.pipe(
       debounceTime(300),
       distinctUntilChanged(),
       switchMap(term => this.marvelService.getCharacters(term))
     );
 
-  format = (character: Character) => {
-    console.log(event);
+  public format(character: Character): string {
     return character.name;
-  };
+  }
+
+  public inputFormatter(character: Character): string {
+    return character.name;
+  }
+
+  public onSelectedCharacter(event: any): void {
+    this.selectedSuperHero = event.item;
+    console.log(this.selectedSuperHero);
+  }
 }
