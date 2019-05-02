@@ -23,4 +23,14 @@ export class MarvelService {
         })
       );
   }
+
+  public getSeries(characterId: number): Observable<any[]> {
+    return this.http
+      .get(`http://gateway.marvel.com/v1/public/characters/${characterId}/series?apikey=bedaac8ca11a2e92783b248c11588ac0`)
+      .pipe(
+        map((result: Marvel) => {
+          return result.data.results;
+        })
+      );
+  }
 }

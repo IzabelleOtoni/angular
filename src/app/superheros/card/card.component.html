@@ -16,9 +16,13 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <button type="button" class="btn btn-primary">Detalhes</button>
+          <button type="button" class="btn btn-primary" (click)="openDetails(detail)">Detalhes</button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<ng-template #detail let-modal>
+  <app-details [popup]="modal" [superHeroId]="superHero.id" [superHeroName]="superHero.name"></app-details>
+</ng-template>
