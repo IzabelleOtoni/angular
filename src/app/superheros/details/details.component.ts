@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MarvelService } from 'src/app/core/marvel/marvel.service';
+import { Serie } from 'src/app/core/marvel/series.model';
 
 @Component({
   selector: 'app-details',
@@ -10,21 +11,23 @@ export class DetailsComponent implements OnInit {
   constructor(public marvelService: MarvelService) {}
 
   @Input()
-  popup: any;
+  public popup: any;
 
   @Input()
-  superHeroId: number;
+  public superHeroId: number;
 
   @Input()
-  superHeroName: string;
+  public superHeroName: string;
+
+  public superHeroSeries: Serie[];
 
   ngOnInit() {
     this.getDetails();
-    console.log(this.popup);
   }
 
   public getDetails(): void {
-    this.marvelService.getSeries(this.superHeroId).subscribe((results: any[]) => {
+    this.marvelService.getSeries(this.superHeroId).subscribe((results: Serie[]) => {
+      this.superHeroSeries = results;
       console.log(results);
     });
   }
