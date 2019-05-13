@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Marvel, Character } from './marvel.model';
+import { Marvel } from './marvel.model';
 import { Serie } from './series.model';
+import { Character } from './character.model';
 
 @Injectable({
   providedIn: 'root',
