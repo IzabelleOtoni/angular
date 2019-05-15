@@ -11,9 +11,10 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
-  declarations: [CardComponent, ContentComponent, DetailsComponent, HomeComponent, LoginComponent, RegisterComponent],
+  declarations: [CardComponent, ContentComponent, DetailsComponent, HomeComponent, LoginComponent, RegisterComponent, LogoutComponent],
   imports: [CommonModule, SuperherosRoutingModule, SharedModule, NgbModule],
   providers: [MarvelService, NgbModal],
 })

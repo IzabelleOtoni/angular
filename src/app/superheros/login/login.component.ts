@@ -20,21 +20,21 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
   tryGoogleLogin() {
     this.authService.doGoogleLogin().then(res => {
-      this.router.navigate(['/user']);
+      this.router.navigate(['/search']);
     });
   }
 
   tryLogin(value) {
     this.authService.doLogin(value).then(
       res => {
-        this.router.navigate(['/user']);
+        this.router.navigate(['/search']);
       },
       err => {
         console.log(err);

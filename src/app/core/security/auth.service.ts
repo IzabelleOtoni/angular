@@ -1,60 +1,33 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
+  public userState: Observable<firebase.User>;
 
-  constructor(
-   public afAuth: AngularFireAuth
- ){}
-
- doGoogleLogin(){
-    return new Promise<any>((resolve, reject) => {
-      let provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('profile');
-      provider.addScope('email');
-      this.afAuth.auth
-      .signInWithPopup(provider)
-      .then(res => {
-        resolve(res);
-      }, err => {
-        console.log(err);
-        reject(err);
-      })
-    })
+  constructor(public afAuth: AngularFireAuth) {
+    this.userState = this.afAuth.authState;
   }
 
-  doRegister(value){
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
-      .then(res => {
-        resolve(res);
-      }, err => reject(err))
-    })
+  doGoogleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    return this.afAuth.auth.signInWithPopup(provider);
   }
 
-  doLogin(value){
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(value.email, value.password)
-      .then(res => {
-        resolve(res);
-      }, err => reject(err))
-    })
+  doRegister(value) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password);
   }
 
-  doLogout(){
-    return new Promise((resolve, reject) => {
-      if(firebase.auth().currentUser){
-        this.afAuth.auth.signOut();
-        resolve();
-      }
-      else{
-        reject();
-      }
-    });
+  doLogin(value) {
+    return this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password);
   }
 
-
+  doLogout() {
+    return this.afAuth.auth.signOut();
+  }
 }

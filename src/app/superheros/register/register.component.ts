@@ -11,11 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   errorMessage: string = '';
-  successMessage: string = '';
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
 
   constructor(public authService: AuthService, private router: Router, private fb: FormBuilder) {
     this.createForm();
@@ -23,32 +20,27 @@ export class RegisterComponent implements OnInit {
 
   createForm() {
     this.registerForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
-  tryGoogleLogin() {
-    this.authService.doGoogleLogin().then(
-      res => {
-        this.router.navigate(['/user']);
-      },
-      err => console.log(err)
-    );
-  }
-
   tryRegister(value) {
-    this.authService.doRegister(value).then(
-      res => {
-        console.log(res);
-        this.errorMessage = '';
-        this.successMessage = 'Your account has been created';
-      },
-      err => {
-        console.log(err);
-        this.errorMessage = err.message;
-        this.successMessage = '';
-      }
-    );
+    this.registerForm.updateValueAndValidity({ emitEvent: false });
+
+    if (this.registerForm.valid) {
+      this.authService.doRegister(value).then(
+        res => {
+          console.log(res);
+          this.errorMessage = '';
+          this.router.navigate(['search']);
+        },
+        err => {
+          console.log(err);
+          this.errorMessage = err.message;
+          this.successMessage = '';
+        }
+      );
+    }
   }
 }

@@ -10,13 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 // FireBase Libraries
 import { AuthGuard } from './security/auth.guard';
 import { AuthService } from './security/auth.service';
-import { UserService } from './user/user.service';
-import { UserResolver } from './user/user.resolver';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, LayoutComponent, NavbarComponent],
   imports: [CommonModule, RouterModule, HttpClientModule],
-  providers: [AuthService, UserService, UserResolver, AuthGuard],
+  providers: [AuthService, AuthGuard],
   exports: [LayoutComponent],
 })
 export class CoreModule {}

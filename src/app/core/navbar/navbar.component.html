@@ -1,14 +1,24 @@
 <div class="navbar navbar-nobg">
-  <ul class="nav navbar-nav">
+  <ul class="nav navbar-nav" *ngIf="authService.userState | async">
     <li class="active">
-      <a [routerLink]="'/'"
+      <a [routerLink]="'/home'"
         >Home
         <div class="ripple-wrapper"></div
       ></a>
     </li>
-    <li><a [routerLink]="'/superheros'">Superheros</a></li>
-    <li><a>Login</a></li>
+    <li><a [routerLink]="'/search'">Superhero Search</a></li>
+    <li><a [routerLink]="'/favorites'">My Favorites</a></li>
     <li><a [routerLink]="'/report'">Report</a></li>
-    <li><a>Contact</a></li>
+    <li><a [routerLink]="'/logout'">Logout</a></li>
+  </ul>
+
+  <ul class="nav navbar-nav" *ngIf="(authService.userState | async) == null">
+    <li class="active">
+      <a [routerLink]="'/home'"
+        >Home
+        <div class="ripple-wrapper"></div
+      ></a>
+    </li>
+    <li><a [routerLink]="'/login'">Login</a></li>
   </ul>
 </div>
