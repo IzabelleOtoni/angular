@@ -2,19 +2,31 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SuperherosRoutingModule } from './superheros-routing.module';
-import { ContentComponent } from './content/content.component';
+import { SearchComponent } from './search/search.component';
 import { MarvelService } from '../core/marvel/marvel.service';
 import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CardComponent } from './card/card.component';
-import { DetailsComponent } from './details/details.component';
+import { CardComponent } from './shared/card/card.component';
+import { DetailsComponent } from './shared/details/details.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { LogoutComponent } from './logout/logout.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
-  declarations: [CardComponent, ContentComponent, DetailsComponent, HomeComponent, LoginComponent, RegisterComponent, LogoutComponent],
+  declarations: [
+    CardComponent,
+    SearchComponent,
+    DetailsComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    LogoutComponent,
+    FavoritesComponent,
+    ReportComponent,
+  ],
   imports: [CommonModule, SuperherosRoutingModule, SharedModule, NgbModule],
   providers: [MarvelService, NgbModal],
 })

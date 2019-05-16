@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Character } from 'src/app/core/marvel/marvel.model';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Character } from 'src/app/core/marvel/character.model';
 
 @Component({
   selector: 'app-card',
@@ -25,4 +25,8 @@ export class CardComponent implements OnInit {
       }
     );
   }
+
+  public addToFavorites(): void {}
+
+  public removeFavorite(): void {}
 }

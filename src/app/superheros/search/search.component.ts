@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/core/marvel/marvel.service';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Character } from 'src/app/core/marvel/marvel.model';
+import { Character } from 'src/app/core/marvel/character.model';
 
 @Component({
-  selector: 'app-content',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css'],
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css'],
 })
-export class ContentComponent implements OnInit {
+export class SearchComponent implements OnInit {
   public superHeros: any;
   public selectedSuperHero: Character;
 

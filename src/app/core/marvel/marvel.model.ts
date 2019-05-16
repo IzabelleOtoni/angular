@@ -6,11 +6,7 @@ export interface MarvelData {
   results: any[];
 }
 
-export interface Character {
-  name: string;
-  data: MarvelData;
-}
-
-export interface CharacterlData {
-  results: any[];
+export interface Thumbnail {
+  path: string;
+  extension: string;
 }

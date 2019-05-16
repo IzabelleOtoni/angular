@@ -36,6 +36,7 @@
           <a [routerLink]="'/home'"><span>S</span>uper<span>H</span>eros</a>
         </h2>
         <p>Another exciting superhero blog</p>
+        <h3 *ngIf="authService.userState | async">Welcome SuperHero: {{ (authService.userState | async)?.displayName }}!</h3>
       </div>
     </div>
   </div>
