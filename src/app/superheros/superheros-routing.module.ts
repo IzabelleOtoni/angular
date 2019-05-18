@@ -16,9 +16,9 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent, canActivate: [NonAuthGuard] },
   { path: 'home', component: HomeComponent },
-  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
-  { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard] },
-  { path: 'report', component: ReportComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent/*, canActivate: [AuthGuard]*/ },
+  { path: 'favorites', component: FavoritesComponent/*, canActivate: [AuthGuard] */},
+  { path: 'report', component: ReportComponent /*, canActivate: [AuthGuard]*/},
 ];
 
 @NgModule({
