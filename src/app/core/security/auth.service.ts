@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
+  
   public userState: Observable<firebase.User>;
+  sendSignInLinkToEmail: any;
 
   constructor(public afAuth: AngularFireAuth) {
     this.userState = this.afAuth.authState;
@@ -29,5 +31,9 @@ export class AuthService {
 
   doLogout() {
     return this.afAuth.auth.signOut();
+  }
+
+  trySendEmail(value, firebase){
+    return this.afAuth.auth.sendSignInLinkToEmail(value.email, firebase.ActionCodeSettings);
   }
 }

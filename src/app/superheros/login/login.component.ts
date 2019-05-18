@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/security/auth.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, EmailValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -42,4 +42,25 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  trySendEmail(value, firebase){
+    this.authService.sendSignInLinkToEmail(value, firebase).then( function($scope: { message: string; }) {
+      $scope.message = "The link was successfully sent.";
+
+    },
+
+      
+
+      // The link was successfully sent. Inform the user. Save the email
+        // locally so you don't need to ask the user for it again if they open
+        // the link on the same device.
+     
+     
+    );
+  }
+  
+
+ 
+
+
 }
