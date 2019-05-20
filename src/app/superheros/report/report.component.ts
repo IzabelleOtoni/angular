@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseUserModel } from 'src/app/core/user/user.model';
-
+import { Character } from 'src/app/core/marvel/character.model';
 
 @Component({
   selector: 'app-report',
@@ -10,22 +9,25 @@ import { FirebaseUserModel } from 'src/app/core/user/user.model';
 export class ReportComponent implements OnInit {
   public myReport = [
     {
-      image: '',
-      name: 'cindy',
-      provider: '',
+      id: 1,
+      description: 'Some description',
+      name: 'dsafa',
+      thumbnail: {},
     },
     {
-      image: '',
-      name: 'iza',
-      provider: '',
+      id: 1,
+      description: 'Some description',
+      name: 'dsafa',
+      thumbnail: {},
     },
     {
-      image: '',
-      name: 'alice',
-      provider: '',
+      id: 1,
+      description: 'Some description',
+      name: 'dsafa',
+      thumbnail: {},
     },
  
-  ] as FirebaseUserModel[];
+  ] as Character[];
   constructor() { }
 
   ngOnInit() {
