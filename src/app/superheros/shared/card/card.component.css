@@ -9,3 +9,7 @@ h1 {
 .icon-button {
   cursor: pointer;
 }
+
+.favorite {
+  color: yellow;
+}

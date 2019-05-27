@@ -7,8 +7,8 @@
       <div class="row">
         <div class="col-md-12">
           <h1 class="d-inline">{{ superHero?.name }}</h1>
-          <a class="d-inline icon-button" (click)="removeFavorite()"><i class="fa fa-star fa-2x"></i></a>
-          <a class="d-inline icon-button" (click)="addToFavorites()"><i class="fa fa-star-o fa-2x"></i></a>
+          <a class="d-inline icon-button" *ngIf="itIsFavorite" (click)="removeFavorite()"><i class="fa fa-star fa-2x favorite"></i></a>
+          <a class="d-inline icon-button" *ngIf="!itIsFavorite" (click)="addToFavorites()"><i class="fa fa-star-o fa-2x"></i></a>
         </div>
       </div>
       <div class="row">
