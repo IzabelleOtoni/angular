@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { LogoutComponent } from './logout/logout.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ReportComponent } from './report/report.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReportComponent } from './report/report.component';
     LogoutComponent,
     FavoritesComponent,
     ReportComponent,
+    ResetPasswordComponent,
   ],
   imports: [CommonModule, SuperherosRoutingModule, SharedModule, NgbModule],
   providers: [MarvelService, NgbModal],

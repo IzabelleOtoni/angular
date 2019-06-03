@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthGuard } from '../core/security/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [NonAuthGuard] },
   { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent, canActivate: [NonAuthGuard] },
+  { path: 'reset', component: ResetPasswordComponent, canActivate: [NonAuthGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'search', component: SearchComponent/*, canActivate: [AuthGuard]*/ },
   { path: 'favorites', component: FavoritesComponent/*, canActivate: [AuthGuard] */},
