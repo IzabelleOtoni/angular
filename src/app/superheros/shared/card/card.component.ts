@@ -17,13 +17,12 @@ export class CardComponent implements OnInit, OnChanges {
   public user: firebase.User;
   public itIsFavorite: boolean;
 
-  constructor(private modalService: NgbModal, private favoritesService: FavoritesService, private authService: AuthService) {}
+  constructor(private modalService: NgbModal, private favoritesService: FavoritesService, private authService: AuthService) { }
 
-  public async ngOnInit(): Promise<void> {
+  public ngOnInit(): void { }
+
+  public async ngOnChanges() {
     this.user = (await this.authService.userState.pipe(take(1)).toPromise()) as firebase.User;
-  }
-
-  public ngOnChanges() {
     this.checkFavorite();
   }
 
@@ -53,7 +52,7 @@ export class CardComponent implements OnInit, OnChanges {
   }
 
   private checkFavorite(): void {
-    if (this.superHero != null) {
+    if (this.superHero && this.user) {
       this.favoritesService.getFavorite(this.user.uid, this.superHero.id).subscribe(superHero => {
         this.itIsFavorite = superHero.exists;
       });

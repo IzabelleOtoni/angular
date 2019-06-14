@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from 'src/app/core/marvel/character.model';
+import { SuperherosService } from '../superheros.service';
 
 @Component({
   selector: 'app-report',
@@ -26,11 +27,11 @@ export class ReportComponent implements OnInit {
       name: 'dsafa',
       thumbnail: {},
     },
- 
+
   ] as Character[];
-  constructor() { }
+  constructor(private superherosService: SuperherosService) { }
 
   ngOnInit() {
+    this.superherosService.getReport().subscribe();
   }
-
 }

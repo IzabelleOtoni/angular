@@ -30,4 +30,4 @@ import { ReportComponent } from './report/report.component';
   imports: [CommonModule, SuperherosRoutingModule, SharedModule, NgbModule],
   providers: [MarvelService, NgbModal],
 })
-export class SuperherosModule {}
+export class SuperherosModule { }
